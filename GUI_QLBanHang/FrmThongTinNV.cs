@@ -94,7 +94,7 @@ namespace GUI_QLBanHang
                     }
                     else
                     {
-                        MessageBox.Show("Mât khẩu cũ không đúng,Cập nhật mật khẩu không thành công");
+                        MessageBox.Show("Mật khẩu cũ không đúng, cập nhật mật khẩu không thành công");
                         txtmatkhaucu.Text = null;
                         txtmatkhaumoi.Text = null;
                         txtmatkhaumoi2.Text = null;
