@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6BD1AFA6-965B-44C2-9518-F39DD6F10AE1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GUI_QLBanHang</RootNamespace>
+    <AssemblyName>GUI_QLBanHang</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDangNhap.Designer.cs">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHang.Designer.cs">
+      <DependentUpon>frmHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKhach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKhach.Designer.cs">
+      <DependentUpon>FrmKhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhanVien.Designer.cs">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmThongKe.Designer.cs">
+      <DependentUpon>FrmThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmThongTinNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmThongTinNV.Designer.cs">
+      <DependentUpon>FrmThongTinNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDangNhap.resx">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHang.resx">
+      <DependentUpon>frmHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKhach.resx">
+      <DependentUpon>FrmKhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhanVien.resx">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmThongTinNV.resx">
+      <DependentUpon>FrmThongTinNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="doc\a.pdf" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\analytics.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\bsa.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\cookieconsent.min.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\gpt.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\jquery.min.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\jquery.plugins.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\js" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\main.min.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\monetization.js.download" />
+    <None Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\pubads_impl_2020030501.js.download" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS_QLBanHang\BUS_QLBanHang.csproj">
+      <Project>{3428a000-c7c2-4108-8798-f14c20ae6509}</Project>
+      <Name>BUS_QLBanHang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO_QLBanHang\DTO_QLBanHang.csproj">
+      <Project>{a3f5217c-4a47-48d0-9570-c8ec756fbc02}</Project>
+      <Name>DTO_QLBanHang</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon\Actions-edit-delete-icon.png" />
+    <Content Include="icon\add-icon.png" />
+    <Content Include="icon\Administrator-icon.png" />
+    <Content Include="icon\BackgroundForm.png" />
+    <Content Include="icon\Cancel.png" />
+    <Content Include="icon\Close-icon.png" />
+    <Content Include="icon\customer.png" />
+    <Content Include="icon\Data-List-icon.png" />
+    <Content Include="icon\edit.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here.html" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Actions-edit-find-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Actions-page-zoom-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\binoculars-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\chart-search-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\cookieconsent.min.css" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\f.txt" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\iconarchive.css" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\logo.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Loupe-icon%281%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Loupe-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Magnifier-icon%281%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Magnifier-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Misc-Zoom-Out-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-2-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\search-b-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%281%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2810%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2811%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2812%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2813%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2814%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2815%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2816%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2817%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2818%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2819%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%282%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2820%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2821%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2822%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2823%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2824%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2825%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2826%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%2827%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%283%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%284%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%285%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%286%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%287%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%288%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon%289%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Search-Images-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\search-orange-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\search-red-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Start-Menu-Search-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Zoom-icon%281%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Zoom-icon%282%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Zoom-icon%283%29.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Zoom-icon.png" />
+    <Content Include="icon\Find 16 Icons - Download 586 Free Find 16 icons here_files\Zoom-Out-icon.png" />
+    <Content Include="icon\find.png" />
+    <Content Include="icon\fpoly.png" />
+    <Content Include="icon\fpt.ico" />
+    <Content Include="icon\Group_product-icon.png" />
+    <Content Include="icon\Login %281%29.png" />
+    <Content Include="icon\login.png" />
+    <Content Include="icon\logout.png" />
+    <Content Include="icon\open-file-icon.png" />
+    <Content Include="icon\product-icon.png" />
+    <Content Include="icon\profile-check-icon.png" />
+    <Content Include="icon\Save-icon.png" />
+    <Content Include="icon\Slide-Show-icon.png" />
+    <Content Include="icon\Stock-icon.png" />
+    <Content Include="icon\User-Group-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
