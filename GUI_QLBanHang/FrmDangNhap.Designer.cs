@@ -57,7 +57,7 @@
             // txtemail
             // 
             this.txtemail.Location = new System.Drawing.Point(24, 143);
-            this.txtemail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtemail.Margin = new System.Windows.Forms.Padding(4);
             this.txtemail.Name = "txtemail";
             this.txtemail.Size = new System.Drawing.Size(364, 22);
             this.txtemail.TabIndex = 1;
@@ -70,7 +70,7 @@
             this.btndangnhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndangnhap.ForeColor = System.Drawing.Color.White;
             this.btndangnhap.Location = new System.Drawing.Point(56, 270);
-            this.btndangnhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btndangnhap.Margin = new System.Windows.Forms.Padding(4);
             this.btndangnhap.Name = "btndangnhap";
             this.btndangnhap.Size = new System.Drawing.Size(272, 34);
             this.btndangnhap.TabIndex = 5;
@@ -84,7 +84,7 @@
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.DimGray;
             this.checkBox1.Location = new System.Drawing.Point(24, 228);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(172, 24);
             this.checkBox1.TabIndex = 3;
@@ -118,7 +118,7 @@
             // txtmatkhau
             // 
             this.txtmatkhau.Location = new System.Drawing.Point(24, 196);
-            this.txtmatkhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtmatkhau.Margin = new System.Windows.Forms.Padding(4);
             this.txtmatkhau.Name = "txtmatkhau";
             this.txtmatkhau.PasswordChar = '*';
             this.txtmatkhau.Size = new System.Drawing.Size(364, 22);
@@ -132,7 +132,7 @@
             this.btnQuenmk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuenmk.ForeColor = System.Drawing.Color.DimGray;
             this.btnQuenmk.Location = new System.Drawing.Point(225, 225);
-            this.btnQuenmk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuenmk.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuenmk.Name = "btnQuenmk";
             this.btnQuenmk.Size = new System.Drawing.Size(164, 28);
             this.btnQuenmk.TabIndex = 4;
@@ -144,7 +144,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(171, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(67, 52);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -159,7 +159,7 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(56, 311);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(272, 34);
             this.button3.TabIndex = 6;
@@ -186,7 +186,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

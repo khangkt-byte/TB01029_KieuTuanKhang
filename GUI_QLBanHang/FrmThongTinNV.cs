@@ -77,9 +77,21 @@ namespace GUI_QLBanHang
                 txtmatkhaumoi.Focus();
                 return;
             }
+            else if (txtmatkhaucu.Text.Trim() == txtmatkhaumoi.Text.Trim())
+            {
+                MessageBox.Show("Vui lòng sử dụng mật khẩu mới khác mật khẩu cũ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtmatkhaumoi.Focus();
+                return;
+            }
+            else if (txtmatkhaumoi.Text.Trim() == "abc123")
+            {
+                MessageBox.Show("Không được sử dụng mật khẩu mặc định. Vui lòng nhập lại mật khẩu mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtmatkhaumoi2.Focus();
+                return;
+            }
             else
             {
-                if (MessageBox.Show("Bạn có chắc muốn cập nhật mật khẩu", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có chắc muốn cập nhật mật khẩu?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //do something if YES
                     string matkhaumoi = encryption(txtmatkhaumoi.Text);
@@ -153,7 +165,7 @@ namespace GUI_QLBanHang
                 // Send our email.
                 client.Send(Msg);
                 //Confirmation After Click the Button
-                MessageBox.Show("Một Email cập nhật mâtk khẩu đã được gọi tới bạn!");
+                MessageBox.Show("Một Email cập nhật mật khẩu đã được gọi tới bạn!");
             }
             catch (Exception ex)
             {

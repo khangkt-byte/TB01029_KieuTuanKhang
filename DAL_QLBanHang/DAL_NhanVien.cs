@@ -177,6 +177,35 @@ namespace DAL_QLBanHang
             return false;
         }
 
+        public bool NhanVienDangNhap(string email, string matKhau)
+        {
+            //using store procedure
+            try
+            {
+                // Ket noi
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "DangNhap";
+                cmd.Parameters.AddWithValue("email", email);
+                cmd.Parameters.AddWithValue("matKhau", matKhau);
+                // Query và kiểm tra
+                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
+            }
+            return false;
+        }
+
         //Lay vai tro khi nhan vien login
         public DataTable VaiTroNhanVien(string email)
         {

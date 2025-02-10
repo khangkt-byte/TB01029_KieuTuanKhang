@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS_QLBanHang;
+using DTO_QLBanHang;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +21,8 @@ namespace GUI_QLBanHang
         public static string mail;// truyên email từ frmMain cho các form khác thong qua bien static
         Thread th;//using System.Threading;
         FrmDangNhap dn;
+        BUS_NhanVien busNhanVien = new BUS_NhanVien();
+        Boolean isPasswordDefault = false;
 
         public FrmMain()
         {
@@ -34,6 +38,24 @@ namespace GUI_QLBanHang
                 profile = 0; //ẩn mục 'thong tin nhan vien'
             }
         }
+
+        private void CheckPassword(object sender, EventArgs e)
+        {
+            DTO_NhanVien nv = new DTO_NhanVien();
+            nv.EmailNV = mail;
+            string matKhauMacDinh = busNhanVien.encryption("abc123");
+            if (busNhanVien.NhanVienDangNhap(nv.EmailNV, matKhauMacDinh))
+            {
+                isPasswordDefault = true;
+                MessageBox.Show("Bạn đang sử dụng mật khẩu mặc định, vui lòng đổi mật khẩu mới để tiếp tục sử dụng!");
+                ProfileNvToolStripMenuItem_Click(sender, e);
+            }
+            else
+            {
+                isPasswordDefault = false;
+            }
+        }
+
         //show form KhachHang
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -178,15 +200,26 @@ namespace GUI_QLBanHang
 
                 thongtinnvToolStripMenuItem.Text = "Chào " + FrmMain.mail;
                 NhanVienToolStripMenuItem.Visible = true;
+                NhanVienToolStripMenuItem.Enabled = true;
                 danhMụcToolStripMenuItem.Visible = true;
+                danhMụcToolStripMenuItem.Enabled = true;
                 LoOutToolStripMenuItem1.Enabled = true;
                 thongkeToolStripMenuItem.Visible = true;
+                thongkeToolStripMenuItem.Enabled = true;
                 ThongKeSPToolStripMenuItem.Visible = true;
+                ThongKeSPToolStripMenuItem.Enabled = true;
                 ProfileNvToolStripMenuItem.Visible = true;
                 đăngNhậpToolStripMenuItem.Enabled = false;
                 if (int.Parse(dn.vaitro) == 0)//nêu la vai tro nhan vien
                 {
                     VaiTroNV(); //chuc nang nhan vien bình thường
+                }
+                if (isPasswordDefault)
+                {
+                    NhanVienToolStripMenuItem.Enabled = false;
+                    danhMụcToolStripMenuItem.Enabled = false;
+                    ThongKeSPToolStripMenuItem.Enabled = false;
+                    thongkeToolStripMenuItem.Enabled = false;
                 }
             }
             else
@@ -205,6 +238,7 @@ namespace GUI_QLBanHang
         {
             //when child form is closed, this code is executed        
             this.Refresh();
+            CheckPassword(sender, e);
             FrmMain_Load(sender, e);// load form main again
         }
 

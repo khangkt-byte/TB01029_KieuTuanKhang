@@ -102,12 +102,12 @@ namespace GUI_QLBanHang
                 }
                 else
                 {
-                    MessageBox.Show("Email khong ton tai, vui long nhap lai email!");
+                    MessageBox.Show("Email không tồn tại, vui lòng nhập lại email!");
                 }
             }
             else
             {
-                MessageBox.Show("Ban can nhap email nhan thong tin phuc hoi mat khau!");
+                MessageBox.Show("Bạn cần nhập email nhận thông tin phục hồi mật khẩu!");
                 txtemail.Focus();
             }
         }

@@ -16,6 +16,11 @@ namespace BUS_QLBanHang
             return dalNhanVien.NhanVienDangNhap(nv);
         }
 
+        public bool NhanVienDangNhap(string email, string matKhau)
+        {
+            return dalNhanVien.NhanVienDangNhap(email, matKhau);
+        }
+
         public string encryption(string password)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
