@@ -12,13 +12,6 @@ namespace DAL_QLBanHang
     {
         public DataTable getNhanVien()
         {
-            /*
-            //Direct sql query
-            SqlDataAdapter da = new SqlDataAdapter("SELECT email, tenNv, diachi,vaitro, tinhtrang FROM tblNhanVien", _conn);
-            DataTable dtNhanVien = new DataTable();
-            da.Fill(dtNhanVien);
-            return dtNhanVien;
-            */
             //Store Procedure
             try
             {
@@ -27,9 +20,9 @@ namespace DAL_QLBanHang
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "[DanhSachNV]";
                 cmd.Connection = _conn;
-                DataTable dtHang = new DataTable();
-                dtHang.Load(cmd.ExecuteReader());
-                return dtHang;
+                DataTable dtNhanVien = new DataTable();
+                dtNhanVien.Load(cmd.ExecuteReader());
+                return dtNhanVien;
             }
             finally
             {
@@ -40,30 +33,6 @@ namespace DAL_QLBanHang
         }
         public bool insertNhanVien(DTO_NhanVien nv)
         {
-            /*
-            try
-            {
-                // Ket noi
-                _conn.Open();
-
-                string SQL = string.Format("INSERT INTO tblNhanVien(email,TenNv, diaChi, vaiTro,tinhtrang) " +
-                    "VALUES ('{0}', '{1}','{2}',{3},{4})", nv.EmailNV, nv.TenNhanVien,nv.DiaChi,nv.VaiTro,nv.TinhTrang);
-                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
-                SqlCommand cmd = new SqlCommand(SQL, _conn);
-                // Query và kiểm tra
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
-            }
-            catch (Exception e)
-            {
-                
-            }
-            finally
-            {
-                // Dong ket noi
-                _conn.Close();
-            }
-            return false;*/
             //using store procedure
             try
             {
@@ -179,63 +148,6 @@ namespace DAL_QLBanHang
 
         public bool NhanVienDangNhap(DTO_NhanVien nv)
         {
-            /*//Use sql statement
-            try
-            {
-                // Ket noi
-                _conn.Open();
-
-                string SQL = "select * from tblNhanVien where email='" 
-                    + nv.EmailNV +"' and  matKhau='"+ nv.MatKhau + "'" ;
-                    
-                SqlCommand cmd = new SqlCommand(SQL, _conn);
-                // Query và kiểm tra
-                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
-                    return true;
-            }
-            catch(Exception e)
-            { }
-            finally
-            {
-                // Dong ket noi
-                _conn.Close();
-            }
-            return false;*/
-
-            /*//Use sql statement with param
-            try
-            {
-                // Ket noi
-                _conn.Open();
-
-                string SQL = "select * from tblNhanVien where email=@email and matkhau = @matkhau";
-                SqlParameter emailParam = new SqlParameter();
-                emailParam.ParameterName = "@email";
-                //emailParam.Value = email;
-                emailParam.Value = nv.EmailNV;
-
-                SqlParameter matKhauParam = new SqlParameter();
-                matKhauParam.ParameterName = "@matkhau";
-                // matKhauParam.Value = matKhau;
-                matKhauParam.Value = nv.MatKhau;
-                SqlCommand cmd = new SqlCommand(SQL, _conn);
-
-                cmd.Parameters.Add(emailParam);
-                cmd.Parameters.Add(matKhauParam);
-                // Query và kiểm tra
-                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
-                    return true;
-            }
-            catch(Exception e)
-            { }
-            finally
-            {
-                // Dong ket noi
-                _conn.Close();
-            }
-            return false;*/
-
-
             //using store procedure
             try
             {

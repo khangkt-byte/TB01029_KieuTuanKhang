@@ -12,12 +12,6 @@ namespace DAL_QLBanHang
     {
         public DataTable getHang()
         {
-            //Direct sql query
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tblHang", _conn);
-            DataTable dtHang = new DataTable();
-            da.Fill(dtHang);
-            return dtHang;
-            /*
             //Store Procedure
             try
             {
@@ -34,36 +28,11 @@ namespace DAL_QLBanHang
             {
                 // Dong ket noi
                 _conn.Close();
-            }*/
+            }
 
         }
         public bool insertHang(DTO_Hang hang)
         {
-            /*
-            try
-            {
-                // Ket noi
-                _conn.Open();
-
-                string SQL = string.Format("INSERT INTO tblhang(TenHang, SoLuong, DonGiaNhap, DonGiaBan, HinhAnh, GhiChu) " +
-                    "VALUES ('{0}', '{1}', '{2}','{3}','{4}','{5}')", hang.TenHang,hang.SoLuong,hang.DonGiaNhap,
-                    hang.DonGiaBan,hang.HinhAnh,hang.GhiChu );
-                // Command (mặc định command type = text .
-                SqlCommand cmd = new SqlCommand(SQL, _conn);
-                // Query và kiểm tra
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
-            }
-            catch (Exception e)
-            {
-                
-            }
-            finally
-            {
-                // Dong ket noi
-                _conn.Close();
-            }
-            return false;*/
             //using store procedure
             try
             {
@@ -99,31 +68,6 @@ namespace DAL_QLBanHang
 
         public bool UpdateHang(DTO_Hang hang)
         {
-            /*
-            try
-            {
-                // Ket noi
-                _conn.Open();
-                string SQL = string.Format("UPDATE tblhang SET TenHang = '{0}', SoLuong = {1}, DonGiaNhap={2}, DonGiaBan={3},"+
-                    "HinhAnh = '{4}', GhiChu='{5}' WHERE MaHang = {6}", hang.TenHang, hang.SoLuong, hang.DonGiaNhap,
-                    hang.DonGiaBan, hang.HinhAnh, hang.GhiChu, hang.MaHang);
-                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
-                SqlCommand cmd = new SqlCommand(SQL, _conn);
-                // Query và kiểm tra
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
-            }
-            catch (Exception e)
-            {
-
-            }
-            finally
-            {
-                // Dong ket noi
-                _conn.Close();
-            }
-            return false;*/
-
             //using store procedure
             try
             {
@@ -159,29 +103,6 @@ namespace DAL_QLBanHang
 
         public bool DeleteHang(int maHang)
         {
-            /* //Direct sql query
-            try
-            {
-                // Ket noi
-                _conn.Open();
-                // Query string - vì xóa chỉ cần ID nên chúng ta ko cần 1 DTO, ID là đủ
-                string SQL = string.Format("DELETE FROM tblHang WHERE MaHang = {0}",  maHang);
-                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
-                SqlCommand cmd = new SqlCommand(SQL, _conn);
-                // Query và kiểm tra
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
-            }
-            catch (Exception e)
-            {
-
-            }
-            finally
-            {
-                // Dong ket noi
-                _conn.Close();
-            }
-            return false;  */
             // using store procedure
             try
             {
@@ -210,19 +131,15 @@ namespace DAL_QLBanHang
 
         public DataTable SearchHang(string tenHang)
         {
-            //Direct sql query
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tblHang where TenHang like '%" + tenHang + "%'", _conn);
-            DataTable dtHang = new DataTable();
-            da.Fill(dtHang);
-            return dtHang;
-            /*
             //Store Procedure
             try
             {
+                // Ket noi
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "DanhSachHang";
+                cmd.CommandText = "[SearchHang]";
+                cmd.Parameters.AddWithValue("TenHang", tenHang);
                 cmd.Connection = _conn;
                 DataTable dtHang = new DataTable();
                 dtHang.Load(cmd.ExecuteReader());
@@ -232,7 +149,7 @@ namespace DAL_QLBanHang
             {
                 // Dong ket noi
                 _conn.Close();
-            }*/
+            }
         }
 
         public DataTable ThongKeHang()

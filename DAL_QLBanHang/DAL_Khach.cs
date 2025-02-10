@@ -12,13 +12,6 @@ namespace DAL_QLBanHang
     {
         public DataTable getKhach()
         {
-
-            /* //Direct sql query
-             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tblKhach", _conn);
-             DataTable dtKhach = new DataTable();
-             da.Fill(dtKhach);
-             return dtKhach;
-             */
             //Store Procedure
             try
             {

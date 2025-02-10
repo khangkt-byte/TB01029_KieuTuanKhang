@@ -53,11 +53,6 @@ namespace BUS_QLBanHang
         {
             return dalNhanVien.SearchNhanVien(tenNhanvien);
         }
-        /*public bool NhanVienDangNhap(string email, string matKhau)
-        {
-            return dalNhanVien.NhanVienDangNhap(email, matKhau);
-        }*/
-
 
         //tra ve vai tro nhan vien dua vao email dang nhap
         public DataTable VaiTroNhanVien(string email)
