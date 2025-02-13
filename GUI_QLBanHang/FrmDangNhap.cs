@@ -95,7 +95,6 @@ namespace GUI_QLBanHang
                     builder.Append(RandomString(4, true));
                     builder.Append(RandomNumber(1000, 9999));
                     builder.Append(RandomString(2, false));
-                    MessageBox.Show(builder.ToString());
                     string matkhaumoi = encryption(builder.ToString());
                     busNhanVien.TaoMatKhau(txtemail.Text, matkhaumoi);// update new pass to database
                     SendMail(txtemail.Text, builder.ToString());// send new pass to email
@@ -140,7 +139,7 @@ namespace GUI_QLBanHang
             try
             {
                 //Now we must create a new Smtp client to send our email.
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);   //smtp.gmail.com // For Gmail
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 25);   //smtp.gmail.com // For Gmail
                 //Authentication.
                 //This is where the valid email account comes into play. You must have a valid email
                 //account(with password) to give our program a place to send the mail from.

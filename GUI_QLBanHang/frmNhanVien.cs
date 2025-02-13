@@ -127,10 +127,10 @@ namespace GUI_QLBanHang
                 Msg.To.Add(email);
 
                 // Assign the subject of our message.
-                Msg.Subject = "Chao mừng thanh vien mới";
+                Msg.Subject = "Chào mừng thành viên mới";
 
                 // Create the content(body) of our message.
-                Msg.Body = "Chào anh/chị. Mật khẩu truy cập phần mềm là abc123, anh/chi vui lòng đăng nhập vào phần mềm và đổi mật khẩu ";
+                Msg.Body = "Chào anh/chị. Mật khẩu truy cập phần mềm là: abc123\nAnh/chị vui lòng đăng nhập vào phần mềm và đổi mật khẩu";
 
                 // Send our account login details to the client.
                 client.Credentials = cred;

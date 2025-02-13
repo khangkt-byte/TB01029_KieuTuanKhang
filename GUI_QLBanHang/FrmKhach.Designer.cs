@@ -66,7 +66,7 @@
             this.panel3.Controls.Add(this.dgvkhach);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 124);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(876, 186);
             this.panel3.TabIndex = 5;
@@ -94,7 +94,7 @@
             this.dgvkhach.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvkhach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvkhach.Location = new System.Drawing.Point(0, 0);
-            this.dgvkhach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvkhach.Margin = new System.Windows.Forms.Padding(4);
             this.dgvkhach.Name = "dgvkhach";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -123,7 +123,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(876, 124);
             this.panel2.TabIndex = 3;
@@ -132,7 +132,7 @@
             // 
             this.rbnu.AutoSize = true;
             this.rbnu.Location = new System.Drawing.Point(660, 91);
-            this.rbnu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbnu.Margin = new System.Windows.Forms.Padding(4);
             this.rbnu.Name = "rbnu";
             this.rbnu.Size = new System.Drawing.Size(45, 20);
             this.rbnu.TabIndex = 15;
@@ -144,7 +144,7 @@
             // 
             this.rbnam.AutoSize = true;
             this.rbnam.Location = new System.Drawing.Point(519, 91);
-            this.rbnam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbnam.Margin = new System.Windows.Forms.Padding(4);
             this.rbnam.Name = "rbnam";
             this.rbnam.Size = new System.Drawing.Size(57, 20);
             this.rbnam.TabIndex = 14;
@@ -166,7 +166,7 @@
             // txtDiachi
             // 
             this.txtDiachi.Location = new System.Drawing.Point(519, 50);
-            this.txtDiachi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiachi.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiachi.Name = "txtDiachi";
             this.txtDiachi.Size = new System.Drawing.Size(253, 22);
             this.txtDiachi.TabIndex = 6;
@@ -175,7 +175,7 @@
             // txtTenkhach
             // 
             this.txtTenkhach.Location = new System.Drawing.Point(173, 87);
-            this.txtTenkhach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenkhach.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenkhach.Name = "txtTenkhach";
             this.txtTenkhach.Size = new System.Drawing.Size(253, 22);
             this.txtTenkhach.TabIndex = 4;
@@ -184,7 +184,7 @@
             // 
             this.txtDienthoai.Enabled = false;
             this.txtDienthoai.Location = new System.Drawing.Point(173, 50);
-            this.txtDienthoai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDienthoai.Margin = new System.Windows.Forms.Padding(4);
             this.txtDienthoai.Name = "txtDienthoai";
             this.txtDienthoai.Size = new System.Drawing.Size(253, 22);
             this.txtDienthoai.TabIndex = 2;
@@ -248,7 +248,7 @@
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 310);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(876, 137);
             this.panel1.TabIndex = 4;
@@ -257,7 +257,7 @@
             // 
             this.txttimKiem.BackColor = System.Drawing.Color.LightGray;
             this.txttimKiem.Location = new System.Drawing.Point(239, 33);
-            this.txttimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txttimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.txttimKiem.Name = "txttimKiem";
             this.txttimKiem.Size = new System.Drawing.Size(256, 22);
             this.txttimKiem.TabIndex = 17;
@@ -269,7 +269,7 @@
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDong.Location = new System.Drawing.Point(752, 75);
-            this.btnDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(116, 47);
             this.btnDong.TabIndex = 16;
@@ -282,7 +282,7 @@
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.Location = new System.Drawing.Point(132, 75);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(116, 47);
             this.btnXoa.TabIndex = 10;
@@ -295,7 +295,7 @@
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.Location = new System.Drawing.Point(256, 75);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(116, 47);
             this.btnSua.TabIndex = 11;
@@ -308,7 +308,7 @@
             this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLuu.Location = new System.Drawing.Point(380, 75);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(116, 47);
             this.btnLuu.TabIndex = 12;
@@ -321,7 +321,7 @@
             this.btnBoqua.Image = ((System.Drawing.Image)(resources.GetObject("btnBoqua.Image")));
             this.btnBoqua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBoqua.Location = new System.Drawing.Point(504, 75);
-            this.btnBoqua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBoqua.Margin = new System.Windows.Forms.Padding(4);
             this.btnBoqua.Name = "btnBoqua";
             this.btnBoqua.Size = new System.Drawing.Size(116, 47);
             this.btnBoqua.TabIndex = 13;
@@ -334,19 +334,20 @@
             this.btnDanhsach.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhsach.Image")));
             this.btnDanhsach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDanhsach.Location = new System.Drawing.Point(628, 75);
-            this.btnDanhsach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDanhsach.Margin = new System.Windows.Forms.Padding(4);
             this.btnDanhsach.Name = "btnDanhsach";
             this.btnDanhsach.Size = new System.Drawing.Size(116, 47);
             this.btnDanhsach.TabIndex = 15;
             this.btnDanhsach.Text = "&Danh Sách";
             this.btnDanhsach.UseVisualStyleBackColor = true;
+            this.btnDanhsach.Click += new System.EventHandler(this.btnDanhsach_Click);
             // 
             // btnTimkiem
             // 
             this.btnTimkiem.Image = ((System.Drawing.Image)(resources.GetObject("btnTimkiem.Image")));
             this.btnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTimkiem.Location = new System.Drawing.Point(521, 21);
-            this.btnTimkiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTimkiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimkiem.Name = "btnTimkiem";
             this.btnTimkiem.Size = new System.Drawing.Size(116, 47);
             this.btnTimkiem.TabIndex = 14;
@@ -359,7 +360,7 @@
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.Location = new System.Drawing.Point(8, 75);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(116, 47);
             this.btnThem.TabIndex = 9;
@@ -376,7 +377,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmKhach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

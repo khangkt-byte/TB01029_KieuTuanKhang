@@ -246,5 +246,11 @@ namespace GUI_QLBanHang
             txttimKiem.Text = null;
             txttimKiem.BackColor = Color.White;
         }
+
+        private void btnDanhsach_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+            LoadGridview_Khach();
+        }
     }
 }
