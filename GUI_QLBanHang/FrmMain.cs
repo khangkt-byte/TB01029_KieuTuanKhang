@@ -30,6 +30,13 @@ namespace GUI_QLBanHang
         }
         public void FrmMain_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.Remember)
+            {
+                dn = new FrmDangNhap();
+                mail = Properties.Settings.Default.Email;
+                session = Properties.Settings.Default.Session;
+                dn.vaitro = Properties.Settings.Default.Role;
+            }
             Resetvalue();
             if (profile == 1)// nếu vừa câp nhật mật khẩu thì 
                              //phải login lại, mục 'thong tin nhan vien' ẩn

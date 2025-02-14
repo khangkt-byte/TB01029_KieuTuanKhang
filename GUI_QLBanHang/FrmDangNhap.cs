@@ -33,6 +33,9 @@ namespace GUI_QLBanHang
         private void FrmDangNhap_Load(object sender, EventArgs e)
         {
             FrmMain.session = 0;// not yet login
+            txtemail.Text = Properties.Settings.Default.Email;
+            txtmatkhau.Text = Properties.Settings.Default.Password;
+            chkGhiNho.Checked = Properties.Settings.Default.Remember;
         }
 
         //event for thoat button
@@ -55,6 +58,24 @@ namespace GUI_QLBanHang
                 vaitro = dt.Rows[0][0].ToString();// lây vai tro cua nhan vien, hien thi cac chuc nang ma nhan vien co the thao tac
                 MessageBox.Show("Đăng nhập thành công");
                 FrmMain.session = 1; // cap nhat trang thai da dang nhap thanh cong
+                if (chkGhiNho.Checked)
+                {
+                    Properties.Settings.Default.Session = FrmMain.session;
+                    Properties.Settings.Default.Email = txtemail.Text;
+                    Properties.Settings.Default.Password = txtmatkhau.Text;
+                    Properties.Settings.Default.Role = vaitro;
+                    Properties.Settings.Default.Remember = chkGhiNho.Checked;
+                }
+                else
+                {
+                    Properties.Settings.Default.Session = 0;
+                    Properties.Settings.Default.Email = "";
+                    Properties.Settings.Default.Password = "";
+                    Properties.Settings.Default.Role = "";
+                    Properties.Settings.Default.Remember = chkGhiNho.Checked;
+                }
+
+                Properties.Settings.Default.Save();
 
                 this.Close();
             }

@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtemail = new System.Windows.Forms.TextBox();
             this.btndangnhap = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkGhiNho = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtmatkhau = new System.Windows.Forms.TextBox();
@@ -78,18 +78,18 @@
             this.btndangnhap.UseVisualStyleBackColor = false;
             this.btndangnhap.Click += new System.EventHandler(this.Btndangnhap_Click);
             // 
-            // checkBox1
+            // chkGhiNho
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.checkBox1.Location = new System.Drawing.Point(24, 228);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(172, 24);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Ghi Nhớ Tài Khoản";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkGhiNho.AutoSize = true;
+            this.chkGhiNho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGhiNho.ForeColor = System.Drawing.Color.DimGray;
+            this.chkGhiNho.Location = new System.Drawing.Point(24, 228);
+            this.chkGhiNho.Margin = new System.Windows.Forms.Padding(4);
+            this.chkGhiNho.Name = "chkGhiNho";
+            this.chkGhiNho.Size = new System.Drawing.Size(172, 24);
+            this.chkGhiNho.TabIndex = 3;
+            this.chkGhiNho.Text = "Ghi Nhớ Tài Khoản";
+            this.chkGhiNho.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -180,7 +180,7 @@
             this.Controls.Add(this.txtmatkhau);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkGhiNho);
             this.Controls.Add(this.btndangnhap);
             this.Controls.Add(this.txtemail);
             this.Controls.Add(this.label1);
@@ -203,7 +203,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtemail;
         private System.Windows.Forms.Button btndangnhap;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkGhiNho;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtmatkhau;
