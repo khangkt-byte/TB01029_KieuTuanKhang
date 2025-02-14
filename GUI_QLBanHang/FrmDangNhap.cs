@@ -47,7 +47,7 @@ namespace GUI_QLBanHang
             DTO_NhanVien nv = new DTO_NhanVien();
             nv.EmailNV = txtemail.Text;
             nv.MatKhau = encryption(txtmatkhau.Text);// ma mat khau de so sanh voi mat khau da ma hoa trong csdl
-            if (busNhanVien.NhanVienDangNhap(nv))//successfull login
+            if (busNhanVien.NhanVienDangNhap(nv.EmailNV, nv.MatKhau))//successfull login
             {
                 //login = true;
                 FrmMain.mail = nv.EmailNV; // truyen email dang nhap cho frmMain

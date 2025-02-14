@@ -146,37 +146,6 @@ namespace DAL_QLBanHang
             }
         }
 
-        public bool NhanVienDangNhap(DTO_NhanVien nv)
-        {
-            //using store procedure
-            try
-            {
-                // Ket noi
-                _conn.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = _conn;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "DangNhap";
-                //cmd.Parameters.AddWithValue("email", email);
-                //cmd.Parameters.AddWithValue("matKhau", matKhau);
-                cmd.Parameters.AddWithValue("email", nv.EmailNV);
-                cmd.Parameters.AddWithValue("matKhau", nv.MatKhau);
-                // Query và kiểm tra
-                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
-                    return true;
-            }
-            catch (Exception e)
-            {
-
-            }
-            finally
-            {
-                // Dong ket noi
-                _conn.Close();
-            }
-            return false;
-        }
-
         public bool NhanVienDangNhap(string email, string matKhau)
         {
             //using store procedure
@@ -201,6 +170,30 @@ namespace DAL_QLBanHang
             finally
             {
                 // Dong ket noi
+                _conn.Close();
+            }
+            return false;
+        }
+
+        public bool NhanVienHoatDong(string email)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "KiemTraHoatDong";
+                cmd.Parameters.AddWithValue("email", email);
+                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
                 _conn.Close();
             }
             return false;

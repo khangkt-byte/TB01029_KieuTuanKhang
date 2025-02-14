@@ -11,14 +11,14 @@ namespace BUS_QLBanHang
 {
     public class BUS_NhanVien
     {
-        public bool NhanVienDangNhap(DTO_NhanVien nv)
-        {
-            return dalNhanVien.NhanVienDangNhap(nv);
-        }
-
         public bool NhanVienDangNhap(string email, string matKhau)
         {
             return dalNhanVien.NhanVienDangNhap(email, matKhau);
+        }
+
+        public bool NhanVienHoatDong(string email)
+        {
+            return dalNhanVien.NhanVienHoatDong(email);
         }
 
         public string encryption(string password)

@@ -56,6 +56,15 @@ namespace GUI_QLBanHang
             }
         }
 
+        private void CheckStatus(object sender, EventArgs e, string email)
+        {
+            if (!busNhanVien.NhanVienHoatDong(email))
+            {
+                MessageBox.Show("Tài khoản của bạn không hoạt động!");
+                LoOutToolStripMenuItem1_Click(sender, e);
+            }
+        }
+
         //show form KhachHang
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -238,6 +247,7 @@ namespace GUI_QLBanHang
         {
             //when child form is closed, this code is executed        
             this.Refresh();
+            CheckStatus(sender, e, mail);
             CheckPassword(sender, e);
             FrmMain_Load(sender, e);// load form main again
         }
