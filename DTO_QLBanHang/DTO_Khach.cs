@@ -8,6 +8,7 @@ namespace DTO_QLBanHang
 {
     public class DTO_Khach
     {
+        private string maKhach;
         private string soDienThoai;
         private string tenKhach;
         private string diaChi;
@@ -70,8 +71,16 @@ namespace DTO_QLBanHang
                 emailKhach = value;
             }
         }
-        public DTO_Khach(string dienThoai, string tenKhach, string diaChi, string phai, string email = null)
+
+        public string MaKhach
         {
+            get => maKhach;
+            set => maKhach = value;
+        }
+
+        public DTO_Khach(string maKhach, string dienThoai, string tenKhach, string diaChi, string phai, string email = null)
+        {
+            this.maKhach = maKhach;
             this.soDienThoai = dienThoai;
             this.tenKhach = tenKhach;
             this.diaChi = diaChi;

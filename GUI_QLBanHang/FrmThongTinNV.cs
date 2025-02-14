@@ -91,7 +91,7 @@ namespace GUI_QLBanHang
             }
             else
             {
-                if (MessageBox.Show("Bạn có chắc muốn cập nhật mật khẩu?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có chắc muốn cập nhật mật khẩu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //do something if YES
                     string matkhaumoi = encryption(txtmatkhaumoi.Text);

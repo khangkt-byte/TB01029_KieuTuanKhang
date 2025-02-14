@@ -31,11 +31,11 @@ namespace GUI_QLBanHang
         private void LoadGridview_Khach()
         {
             dgvkhach.DataSource = busKhach.getKhach();
-            dgvkhach.Columns[0].HeaderText = "Điện Thoại";
-            dgvkhach.Columns[1].HeaderText = "Họ và Tên";
-            dgvkhach.Columns[2].HeaderText = "Địa Chỉ";
-            dgvkhach.Columns[3].HeaderText = "Giới Tính";
-            dgvkhach.Columns[4].Visible = false;
+            dgvkhach.Columns[0].Visible = false;
+            dgvkhach.Columns[1].HeaderText = "Điện Thoại";
+            dgvkhach.Columns[2].HeaderText = "Họ và Tên";
+            dgvkhach.Columns[3].HeaderText = "Địa Chỉ";
+            dgvkhach.Columns[4].HeaderText = "Giới Tính";
         }
 
         //thiết lập trạng thái control khi form load
@@ -61,6 +61,11 @@ namespace GUI_QLBanHang
             btnXoa.Enabled = false;
 
             txtDienthoai.Focus();
+        }
+
+        public bool KiemTraSoDienThoaiKhach(string dienThoai)
+        {
+            return busKhach.KiemTraSoDienThoaiKhach(dienThoai);
         }
 
         private void BtnDong_Click(object sender, EventArgs e)
@@ -103,16 +108,41 @@ namespace GUI_QLBanHang
             string phai = "Nam";
             if (rbnu.Checked == true)
                 phai = "Nữ";
-            if (!isInt || float.Parse(txtDienthoai.Text) < 0)// kiem tra so điện thoại
+            if (!isInt || float.Parse(txtDienthoai.Text) < 0 || txtDienthoai.Text.Length != 10)// kiem tra so điện thoại
             {
-                MessageBox.Show("Bạn phải nhập số điện thoại >0, số nguyên", "Thông báo",
+                MessageBox.Show("Bạn phải nhập số điện thoại > 0, số nguyên, đủ 10 số", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDienthoai.Focus();
                 return;
             }
+            if (KiemTraSoDienThoaiKhach(txtDienthoai.Text))
+            {
+                MessageBox.Show("Số điện thoại khách đã tồn tại", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDienthoai.Focus();
+                return;
+            }
+            if (txtTenkhach.Text.Trim().Length == 0)// kiem tra phai nhap data
+            {
+                MessageBox.Show("Bạn phải nhập tên khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTenkhach.Focus();
+                return;
+            }
+            else if (txtDiachi.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập địa chỉ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDiachi.Focus();
+                return;
+            }
+            if (rbnam.Checked == false && rbnu.Checked == false)// kiem tra phai check gioi tinh
+            {
+                MessageBox.Show("Bạn phải chọn giới tính khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTenkhach.Focus();
+                return;
+            }
             else
             {
-                DTO_Khach kh = new DTO_Khach(txtDienthoai.Text, txtTenkhach.Text,
+                DTO_Khach kh = new DTO_Khach(null, txtDienthoai.Text, txtTenkhach.Text,
                     txtDiachi.Text, phai, stremail);
                 if (busKhach.InsertKhach(kh))
                 {
@@ -122,7 +152,7 @@ namespace GUI_QLBanHang
                 }
                 else
                 {
-                    MessageBox.Show("Thêm ko thành công");
+                    MessageBox.Show("Thêm không thành công");
                 }
             }
         }
@@ -140,10 +170,10 @@ namespace GUI_QLBanHang
                 txtDienthoai.Focus();
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-                txtDienthoai.Text = dgvkhach.CurrentRow.Cells[0].Value.ToString();
-                txtTenkhach.Text = dgvkhach.CurrentRow.Cells[1].Value.ToString();
-                txtDiachi.Text = dgvkhach.CurrentRow.Cells[2].Value.ToString();
-                string phai = dgvkhach.CurrentRow.Cells[3].Value.ToString();
+                txtDienthoai.Text = dgvkhach.CurrentRow.Cells[1].Value.ToString();
+                txtTenkhach.Text = dgvkhach.CurrentRow.Cells[2].Value.ToString();
+                txtDiachi.Text = dgvkhach.CurrentRow.Cells[3].Value.ToString();
+                string phai = dgvkhach.CurrentRow.Cells[4].Value.ToString();
                 if (phai == "Nam")
                     rbnam.Checked = true;
                 else
@@ -158,22 +188,47 @@ namespace GUI_QLBanHang
         private void BtnSua_Click(object sender, EventArgs e)
         {
 
-            float intDienThoai;
-            bool isInt = float.TryParse(txtDienthoai.Text.Trim().ToString(), out intDienThoai);//ep kiểu để kiểm tra là số hay chữ
+            string maKhach = dgvkhach.CurrentRow.Cells[0].Value.ToString();
+            bool isInt = float.TryParse(txtDienthoai.Text.Trim().ToString(), out float intDienThoai);//ep kiểu để kiểm tra là số hay chữ
             string phai = "Nam";
             if (rbnu.Checked == true)
                 phai = "Nữ";
-            if (!isInt || float.Parse(txtDienthoai.Text) < 0)// kiem tra so điện thoại
+            if (!isInt || float.Parse(txtDienthoai.Text) < 0 || txtDienthoai.Text.Length != 10)// kiem tra so điện thoại
             {
-                MessageBox.Show("Bạn phải nhập số điện thoại >0, số nguyên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập số điện thoại > 0, số nguyên, đủ 10 số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDienthoai.Focus();
+                return;
+            }
+            if (KiemTraSoDienThoaiKhach(txtDienthoai.Text))
+            {
+                MessageBox.Show("Số điện thoại khách đã tồn tại", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDienthoai.Focus();
+                return;
+            }
+            if (txtTenkhach.Text.Trim().Length == 0)// kiem tra phai nhap data
+            {
+                MessageBox.Show("Bạn phải nhập tên khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTenkhach.Focus();
+                return;
+            }
+            else if (txtDiachi.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập địa chỉ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDiachi.Focus();
+                return;
+            }
+            if (rbnam.Checked == false && rbnu.Checked == false)// kiem tra phai check gioi tinh
+            {
+                MessageBox.Show("Bạn phải chọn giới tính khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTenkhach.Focus();
                 return;
             }
             else
             {
                 // Tạo DTo
-                DTO_Khach kh = new DTO_Khach(txtDienthoai.Text, txtTenkhach.Text, txtDiachi.Text, phai); // Vì ID tự tăng nên để ID số gì cũng dc
-                if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                DTO_Khach kh = new DTO_Khach(maKhach, txtDienthoai.Text, txtTenkhach.Text, txtDiachi.Text, phai); // Vì ID tự tăng nên để ID số gì cũng dc
+                if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (busKhach.UpdateKhach(kh))
                     {
@@ -197,7 +252,7 @@ namespace GUI_QLBanHang
         private void BtnXoa_Click(object sender, EventArgs e)
         {
             string soDT = txtDienthoai.Text;
-            if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu khách hàng", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu khách hàng?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //do something if YES
                 if (busKhach.DeleteKhach(soDT))
@@ -236,7 +291,7 @@ namespace GUI_QLBanHang
                 MessageBox.Show("Không tìm thấy khách hàng nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txttimKiem.Focus();
             }
-            txttimKiem.Text = "Nhập số điện thoại khach hàng";
+            txttimKiem.Text = "Nhập số điện thoại khách hàng";
             txttimKiem.BackColor = Color.LightGray;
             ResetValues();
         }
@@ -249,7 +304,6 @@ namespace GUI_QLBanHang
 
         private void btnDanhsach_Click(object sender, EventArgs e)
         {
-            ResetValues();
             LoadGridview_Khach();
         }
     }

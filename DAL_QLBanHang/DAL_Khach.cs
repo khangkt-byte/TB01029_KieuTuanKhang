@@ -76,6 +76,7 @@ namespace DAL_QLBanHang
                 cmd.Connection = _conn;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "UpdateDataIntoTblKhach";
+                cmd.Parameters.AddWithValue("MaKhach", khach.MaKhach);
                 cmd.Parameters.AddWithValue("Dienthoai", khach.SoDienThoai);
                 cmd.Parameters.AddWithValue("TenKhach", khach.TenKhach);
                 cmd.Parameters.AddWithValue("DiaChi", khach.DiaChi);
@@ -145,6 +146,30 @@ namespace DAL_QLBanHang
                 // Dong ket noi
                 _conn.Close();
             }
+        }
+
+        public bool KiemTraSoDienThoaiKhach(string dienThoai)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "KiemTraSoDienThoaiKhach";
+                cmd.Parameters.AddWithValue("Dienthoai", dienThoai);
+                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
         }
     }
 }

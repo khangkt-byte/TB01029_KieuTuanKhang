@@ -170,7 +170,6 @@
             this.txtDiachi.Name = "txtDiachi";
             this.txtDiachi.Size = new System.Drawing.Size(253, 22);
             this.txtDiachi.TabIndex = 6;
-            this.txtDiachi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTenkhach
             // 
@@ -182,7 +181,6 @@
             // 
             // txtDienthoai
             // 
-            this.txtDienthoai.Enabled = false;
             this.txtDienthoai.Location = new System.Drawing.Point(173, 50);
             this.txtDienthoai.Margin = new System.Windows.Forms.Padding(4);
             this.txtDienthoai.Name = "txtDienthoai";

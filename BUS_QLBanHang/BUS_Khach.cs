@@ -31,5 +31,9 @@ namespace BUS_QLBanHang
         {
             return dalKhach.SearchKhach(soDT);
         }
+        public bool KiemTraSoDienThoaiKhach(string dienThoai)
+        {
+            return dalKhach.KiemTraSoDienThoaiKhach(dienThoai);
+        }
     }
 }

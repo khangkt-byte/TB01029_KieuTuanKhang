@@ -61,7 +61,7 @@ namespace GUI_QLBanHang
         private void BtnXoa_Click(object sender, EventArgs e)
         {
             int maHang = int.Parse(txtMahang.Text);
-            if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //do something if YES
                 if (busHang.DeleteHang(maHang))
@@ -141,19 +141,25 @@ namespace GUI_QLBanHang
             }
             else if (!isInt || int.Parse(txtSoluong.Text) < 0)// kiem tra so nguyen > 0
             {
-                MessageBox.Show("Bạn phải nhập số lượng sản phẩm >0, số nguyên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập số lượng sản phẩm > 0, số nguyên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSoluong.Focus();
                 return;
             }
             else if (!isFloatNhap || float.Parse(txtDongianhap.Text) < 0)// kiem tra so > 0
             {
-                MessageBox.Show("Bạn phải nhập đơn giá nhập >0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập đơn giá nhập > 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongianhap.Focus();
                 return;
             }
             else if (!isFloatBan || float.Parse(txtDongiaban.Text) < 0)// kiem tra so > 0
             {
-                MessageBox.Show("Bạn phải nhập đơn giá bán >0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập đơn giá bán > 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDongiaban.Focus();
+                return;
+            }
+            else if (float.Parse(txtDongiaban.Text) < float.Parse(txtDongianhap.Text))// kiem tra don gia ban lon hon don gia nhap
+            {
+                MessageBox.Show("Bạn phải nhập đơn giá bán lớn hơn đơn giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongiaban.Focus();
                 return;
             }
@@ -167,6 +173,8 @@ namespace GUI_QLBanHang
             {
                 DTO_Hang h = new DTO_Hang(txtTenhang.Text, int.Parse(txtSoluong.Text), float.Parse(txtDongianhap.Text),
                     float.Parse(txtDongiaban.Text), "\\Images\\" + fileName, txtGhichu.Text, stremail);
+                //DTO_Hang h = new DTO_Hang(txtTenhang.Text, int.Parse(txtSoluong.Text), float.Parse(txtDongianhap.Text),
+                //    float.Parse(txtDongiaban.Text), txtHinh.Text, txtGhichu.Text, stremail);
                 if (busHang.InsertHang(h))
                 {
                     MessageBox.Show("Thêm sản phẩm thành công");
@@ -196,6 +204,17 @@ namespace GUI_QLBanHang
                 fileSavePath = saveDirectory + "\\Images\\" + fileName;// combine with file name*/
                 txtHinh.Text = "\\Images\\" + fileName;
             }
+
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+            //openFileDialog.FilterIndex = 2;
+            //openFileDialog.Title = "Chọn ảnh minh hoạ cho sản phẩm";
+            //if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    var imagePath = openFileDialog.FileName;
+            //    pbHinh.ImageLocation = imagePath;
+            //    txtHinh.Text = imagePath;
+            //}
         }
         private void Dgvhang_Click(object sender, EventArgs e)
         {
@@ -220,6 +239,7 @@ namespace GUI_QLBanHang
                 txtHinh.Text = dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString();
                 checkUrlImage = txtHinh.Text;//giữ đường dẫn file hình
                 pbHinh.Image = Image.FromFile(saveDirectory + dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString());
+                //pbHinh.ImageLocation = dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString();
                 txtGhichu.Text = dgvhang.CurrentRow.Cells["GhiChu"].Value.ToString();
             }
             else
@@ -243,19 +263,25 @@ namespace GUI_QLBanHang
             }
             else if (!isInt || int.Parse(txtSoluong.Text) < 0)// kiem tra so nguyen > 0
             {
-                MessageBox.Show("Bạn phải nhập số lượng sản phẩm >0, số nguyên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập số lượng sản phẩm > 0, số nguyên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSoluong.Focus();
                 return;
             }
             else if (!isFloatNhap || float.Parse(txtDongianhap.Text) < 0)// kiem tra so > 0
             {
-                MessageBox.Show("Bạn phải nhập đơn giá nhập >0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập đơn giá nhập > 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongianhap.Focus();
                 return;
             }
             else if (!isFloatBan || float.Parse(txtDongiaban.Text) < 0)// kiem tra so > 0
             {
-                MessageBox.Show("Bạn phải nhập đơn giá bán >0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập đơn giá bán > 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDongiaban.Focus();
+                return;
+            }
+            else if (float.Parse(txtDongiaban.Text) < float.Parse(txtDongianhap.Text))// kiem tra don gia ban lon hon don gia nhap
+            {
+                MessageBox.Show("Bạn phải nhập đơn giá bán lớn hơn đơn giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongiaban.Focus();
                 return;
             }
@@ -270,7 +296,7 @@ namespace GUI_QLBanHang
                 DTO_Hang h = new DTO_Hang(int.Parse(txtMahang.Text), txtTenhang.Text, int.Parse(txtSoluong.Text),
                     float.Parse(txtDongianhap.Text),
                     float.Parse(txtDongiaban.Text), txtHinh.Text, txtGhichu.Text);
-                if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa", "Confirm", MessageBoxButtons.YesNo,
+                if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa?", "Xác nhận", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (busHang.UpdateHang(h))
@@ -283,7 +309,7 @@ namespace GUI_QLBanHang
                     }
                     else
                     {
-                        MessageBox.Show("Sửa ko thành công");
+                        MessageBox.Show("Sửa không thành công");
                     }
                 }
                 else
@@ -307,7 +333,7 @@ namespace GUI_QLBanHang
             }
             else
             {
-                MessageBox.Show("Không tìm thấy san pham", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không tìm thấy sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             txttimKiem.Text = "Nhập tên sản phẩm";
             txttimKiem.BackColor = Color.LightGray;
@@ -320,7 +346,6 @@ namespace GUI_QLBanHang
         }
         private void BtnDanhsach_Click(object sender, EventArgs e)
         {
-            ResetValues();
             LoadGridview_Hang();
         }
     }

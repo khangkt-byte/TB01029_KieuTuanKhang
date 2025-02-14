@@ -16,9 +16,9 @@ namespace BUS_QLBanHang
             return dalNhanVien.NhanVienDangNhap(email, matKhau);
         }
 
-        public bool NhanVienHoatDong(string email)
+        public bool NhanVienKhongHoatDong(string email)
         {
-            return dalNhanVien.NhanVienHoatDong(email);
+            return dalNhanVien.NhanVienKhongHoatDong(email);
         }
 
         public string encryption(string password)

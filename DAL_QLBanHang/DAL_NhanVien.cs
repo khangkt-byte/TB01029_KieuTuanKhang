@@ -175,7 +175,7 @@ namespace DAL_QLBanHang
             return false;
         }
 
-        public bool NhanVienHoatDong(string email)
+        public bool NhanVienKhongHoatDong(string email)
         {
             try
             {
@@ -185,7 +185,7 @@ namespace DAL_QLBanHang
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "KiemTraHoatDong";
                 cmd.Parameters.AddWithValue("email", email);
-                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
+                if (Convert.ToInt16(cmd.ExecuteScalar()) == 0)
                     return true;
             }
             catch (Exception)

@@ -29,7 +29,6 @@ namespace GUI_QLBanHang
         private void BtnBoqua_Click(object sender, EventArgs e)
         {
             ResetValues();
-            LoadGridview_NhanVien();
         }
         private void LoadGridview_NhanVien()
         {
@@ -141,7 +140,7 @@ namespace GUI_QLBanHang
                 // Send our email.
                 client.Send(Msg);
                 //Confirmation After Click the Button
-                MessageBox.Show("Your Mail is sended");
+                MessageBox.Show("Đã gửi email đến nhân viên mới");
             }
             catch (Exception ex)
             {
@@ -166,7 +165,7 @@ namespace GUI_QLBanHang
             }
             else if (!IsValid(txtEmail.Text.Trim()))
             {
-                MessageBox.Show("Bạn phải nhập đúng định dang email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập đúng định dạng email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtEmail.Focus();
                 return;
             }
@@ -184,13 +183,13 @@ namespace GUI_QLBanHang
             }
             if (rbQuantri.Checked == false && rbNhanvien.Checked == false)// kiem tra phai check tình trạng
             {
-                MessageBox.Show("Bạn phải chon vai trò nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải chọn vai trò nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTennv.Focus();
                 return;
             }
             if (rbHoatDong.Checked == false && rbNgung.Checked == false)// kiem tra phai check tình trạng
             {
-                MessageBox.Show("Bạn phải chon tình trạng nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải chọn tình trạng nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTennv.Focus();
                 return;
             }
@@ -208,7 +207,7 @@ namespace GUI_QLBanHang
                 }
                 else
                 {
-                    MessageBox.Show("Thêm ko thành công");
+                    MessageBox.Show("Thêm không thành công");
                 }
             }
         }
@@ -271,7 +270,7 @@ namespace GUI_QLBanHang
                     tinhtrang = 1;// hoạt đọng
                 // Tạo DTo
                 DTO_NhanVien nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang); // Vì ID tự tăng nên để ID số gì cũng dc
-                if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     == DialogResult.Yes)
                 {
                     //do something if YES
@@ -283,7 +282,7 @@ namespace GUI_QLBanHang
                     }
                     else
                     {
-                        MessageBox.Show("Sửa ko thành công");
+                        MessageBox.Show("Sửa không thành công");
                     }
                 }
                 else
@@ -296,7 +295,7 @@ namespace GUI_QLBanHang
         private void BtnXoa_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
-            if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu", "Confirm",
+            if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu?", "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //do something if YES
@@ -351,8 +350,42 @@ namespace GUI_QLBanHang
         //su kien chon Danh Sach button
         private void BtnDanhsach_Click(object sender, EventArgs e)
         {
-            ResetValues();
             LoadGridview_NhanVien();
+        }
+
+        private void dgvNhanvien_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvNhanvien.Columns[e.ColumnIndex].HeaderText == "Vai Trò")
+            {
+                if (e.Value != null)
+                {
+                    int value = Convert.ToInt32(e.Value);
+                    if (value == 0)
+                    {
+                        e.Value = "Nhân viên";
+                    }
+                    else if (value == 1)
+                    {
+                        e.Value = "Quản trị";
+                    }
+                }
+            }
+
+            if (dgvNhanvien.Columns[e.ColumnIndex].HeaderText == "Tình Trạng")
+            {
+                if (e.Value != null)
+                {
+                    int value = Convert.ToInt32(e.Value);
+                    if (value == 0)
+                    {
+                        e.Value = "Ngừng hoạt động";
+                    }
+                    else if (value == 1)
+                    {
+                        e.Value = "Hoạt động";
+                    }
+                }
+            }
         }
     }
 }
