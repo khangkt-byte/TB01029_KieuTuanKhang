@@ -57,6 +57,11 @@ namespace GUI_QLBanHang
                 DataTable dt = busNhanVien.VaiTroNhanVien(nv.EmailNV);
                 vaitro = dt.Rows[0][0].ToString();// lây vai tro cua nhan vien, hien thi cac chuc nang ma nhan vien co the thao tac
                 MessageBox.Show("Đăng nhập thành công");
+                if (busNhanVien.NhanVienKhongHoatDong(nv.EmailNV))
+                {
+                    MessageBox.Show("Tài khoản của bạn không hoạt động!");
+                    return;
+                }
                 FrmMain.session = 1; // cap nhat trang thai da dang nhap thanh cong
                 if (chkGhiNho.Checked)
                 {

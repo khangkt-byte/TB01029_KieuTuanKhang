@@ -50,7 +50,7 @@ namespace GUI_QLBanHang
         {
             DTO_NhanVien nv = new DTO_NhanVien();
             nv.EmailNV = mail;
-            string matKhauMacDinh = busNhanVien.encryption("abc123");
+            string matKhauMacDinh = "23315424196402035621";
             if (busNhanVien.NhanVienDangNhap(nv.EmailNV, matKhauMacDinh))
             {
                 isPasswordDefault = true;
@@ -60,15 +60,6 @@ namespace GUI_QLBanHang
             else
             {
                 isPasswordDefault = false;
-            }
-        }
-
-        private void CheckStatus(object sender, EventArgs e, string email)
-        {
-            if (busNhanVien.NhanVienKhongHoatDong(email))
-            {
-                MessageBox.Show("Tài khoản của bạn không hoạt động!");
-                LoOutToolStripMenuItem1_Click(sender, e);
             }
         }
 
@@ -254,7 +245,6 @@ namespace GUI_QLBanHang
         {
             //when child form is closed, this code is executed        
             this.Refresh();
-            CheckStatus(sender, e, mail);
             CheckPassword(sender, e);
             FrmMain_Load(sender, e);// load form main again
         }
