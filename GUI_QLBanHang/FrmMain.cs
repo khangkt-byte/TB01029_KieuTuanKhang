@@ -22,7 +22,7 @@ namespace GUI_QLBanHang
         Thread th;//using System.Threading;
         FrmDangNhap dn;
         BUS_NhanVien busNhanVien = new BUS_NhanVien();
-        Boolean isPasswordDefault = false;
+        public static Boolean isPasswordDefault = false;
 
         public FrmMain()
         {
@@ -43,23 +43,6 @@ namespace GUI_QLBanHang
             {
                 thongtinnvToolStripMenuItem.Text = null;
                 profile = 0; //ẩn mục 'thong tin nhan vien'
-            }
-        }
-
-        private void CheckPassword(object sender, EventArgs e)
-        {
-            DTO_NhanVien nv = new DTO_NhanVien();
-            nv.EmailNV = mail;
-            string matKhauMacDinh = "23315424196402035621";
-            if (busNhanVien.NhanVienDangNhap(nv.EmailNV, matKhauMacDinh))
-            {
-                isPasswordDefault = true;
-                MessageBox.Show("Bạn đang sử dụng mật khẩu mặc định, vui lòng đổi mật khẩu mới để tiếp tục sử dụng!");
-                ProfileNvToolStripMenuItem_Click(sender, e);
-            }
-            else
-            {
-                isPasswordDefault = false;
             }
         }
 
@@ -190,7 +173,19 @@ namespace GUI_QLBanHang
             }
         }
 
-
+        private void CheckPassword(object sender, EventArgs e, string email)
+        {
+            if (busNhanVien.NhanVienDangNhap(email, "23315424196402035621"))
+            {
+                FrmMain.isPasswordDefault = true;
+                MessageBox.Show("Bạn đang sử dụng mật khẩu mặc định, vui lòng đổi mật khẩu mới để tiếp tục sử dụng!");
+                ProfileNvToolStripMenuItem_Click(sender, e);
+            }
+            else
+            {
+                FrmMain.isPasswordDefault = false;
+            }
+        }
 
         //chuc nang nhan vien bình thường ko hiên thị quan lý nhan vien và thống kê
         private void VaiTroNV()
@@ -238,6 +233,8 @@ namespace GUI_QLBanHang
                 ThongKeSPToolStripMenuItem.Visible = false;
                 thongkeToolStripMenuItem.Visible = false;
                 đăngNhậpToolStripMenuItem.Enabled = true;
+                mail = null;
+                isPasswordDefault = false;
             }
         }
 
@@ -245,8 +242,8 @@ namespace GUI_QLBanHang
         {
             //when child form is closed, this code is executed        
             this.Refresh();
-            CheckPassword(sender, e);
             FrmMain_Load(sender, e);// load form main again
+            CheckPassword(sender, e, mail);
         }
 
 
@@ -260,7 +257,6 @@ namespace GUI_QLBanHang
         private void LoOutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             thongtinnvToolStripMenuItem.Text = null;
-            mail = null;
             session = 0;
             Resetvalue();
         }
