@@ -63,9 +63,9 @@ namespace GUI_QLBanHang
             txtDienthoai.Focus();
         }
 
-        public bool KiemTraSoDienThoaiKhach(string dienThoai)
+        public bool KiemTraSoDienThoaiKhach(string dienThoai, int maKhach)
         {
-            return busKhach.KiemTraSoDienThoaiKhach(dienThoai);
+            return busKhach.KiemTraSoDienThoaiKhach(dienThoai, maKhach);
         }
 
         private void BtnDong_Click(object sender, EventArgs e)
@@ -103,6 +103,7 @@ namespace GUI_QLBanHang
 
         private void BtnLuu_Click(object sender, EventArgs e)
         {
+            string maKhach = dgvkhach.CurrentRow.Cells[0].Value.ToString();
             float intDienThoai;
             bool isInt = float.TryParse(txtDienthoai.Text.Trim().ToString(), out intDienThoai);//ep kiểu để kiểm tra là số hay chữ
             string phai = "Nam";
@@ -115,7 +116,7 @@ namespace GUI_QLBanHang
                 txtDienthoai.Focus();
                 return;
             }
-            if (KiemTraSoDienThoaiKhach(txtDienthoai.Text))
+            if (KiemTraSoDienThoaiKhach(txtDienthoai.Text, Convert.ToInt32(maKhach)))
             {
                 MessageBox.Show("Số điện thoại khách đã tồn tại", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -199,7 +200,7 @@ namespace GUI_QLBanHang
                 txtDienthoai.Focus();
                 return;
             }
-            if (KiemTraSoDienThoaiKhach(txtDienthoai.Text))
+            if (KiemTraSoDienThoaiKhach(txtDienthoai.Text, Convert.ToInt32(maKhach)))
             {
                 MessageBox.Show("Số điện thoại khách đã tồn tại", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);

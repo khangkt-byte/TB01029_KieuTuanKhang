@@ -148,7 +148,7 @@ namespace DAL_QLBanHang
             }
         }
 
-        public bool KiemTraSoDienThoaiKhach(string dienThoai)
+        public bool KiemTraSoDienThoaiKhach(string dienThoai, int maKhach)
         {
             try
             {
@@ -158,6 +158,7 @@ namespace DAL_QLBanHang
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "KiemTraSoDienThoaiKhach";
                 cmd.Parameters.AddWithValue("Dienthoai", dienThoai);
+                cmd.Parameters.AddWithValue("MaKhach", maKhach);
                 if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
                     return true;
             }

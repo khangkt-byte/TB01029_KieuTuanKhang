@@ -35,7 +35,6 @@ namespace GUI_QLBanHang
             FrmMain.session = 0;// not yet login
             txtemail.Text = Properties.Settings.Default.Email;
             txtmatkhau.Text = Properties.Settings.Default.Password;
-            chkGhiNho.Checked = Properties.Settings.Default.Remember;
         }
 
         //event for thoat button

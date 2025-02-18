@@ -27,9 +27,6 @@ namespace GUI_QLBanHang
         public FrmMain()
         {
             InitializeComponent();
-        }
-        public void FrmMain_Load(object sender, EventArgs e)
-        {
             if (Properties.Settings.Default.Remember)
             {
                 dn = new FrmDangNhap();
@@ -37,6 +34,9 @@ namespace GUI_QLBanHang
                 session = Properties.Settings.Default.Session;
                 dn.vaitro = Properties.Settings.Default.Role;
             }
+        }
+        public void FrmMain_Load(object sender, EventArgs e)
+        {
             Resetvalue();
             if (profile == 1)// nếu vừa câp nhật mật khẩu thì 
                              //phải login lại, mục 'thong tin nhan vien' ẩn
@@ -259,6 +259,8 @@ namespace GUI_QLBanHang
             thongtinnvToolStripMenuItem.Text = null;
             session = 0;
             Resetvalue();
+            Properties.Settings.Default.Remember = false;
+            Properties.Settings.Default.Save();
         }
         private void OpenNewForm()
         {
