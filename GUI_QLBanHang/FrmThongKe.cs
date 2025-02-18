@@ -58,6 +58,18 @@ namespace GUI_QLBanHang
             dgvtonkho.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvtonkho.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        private void FrmThongKe_Load(object sender, EventArgs e)
+        {
+            if (tcThongKe.SelectedTab == tpsanpham)
+            {
+                LoadGridview_ThongKeHang();
+            }
+            else if (tcThongKe.SelectedTab == tptonkho)
+            {
+                LoadGridview_ThongKeTonKho();
+            }
+        }
     }
 }
 

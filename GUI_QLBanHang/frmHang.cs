@@ -19,8 +19,11 @@ namespace GUI_QLBanHang
         string stremail = FrmMain.mail;//nhận email tư FrmMain
         string checkUrlImage;//kiểm tra hinh khi câp nhật
         string fileName;  // ten file
+        string newFileName;
         string fileSavePath;//url store image  
         string fileAddress;// url load images
+        readonly string saveDirectory = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
+
         public frmHang()
         {
             InitializeComponent();
@@ -67,6 +70,7 @@ namespace GUI_QLBanHang
                 if (busHang.DeleteHang(maHang))
                 {
                     MessageBox.Show("Xóa dữ liệu thành công");
+                    File.Delete(saveDirectory + checkUrlImage);
                     ResetValues();
                     LoadGridview_Hang(); // refresh datagridview
                 }
@@ -159,7 +163,7 @@ namespace GUI_QLBanHang
             }
             else if (float.Parse(txtDongiaban.Text) < float.Parse(txtDongianhap.Text))// kiem tra don gia ban lon hon don gia nhap
             {
-                MessageBox.Show("Bạn phải nhập đơn giá bán lớn hơn đơn giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập đơn giá bán lớn hơn hoặc bằng đơn giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongiaban.Focus();
                 return;
             }
@@ -172,7 +176,7 @@ namespace GUI_QLBanHang
             else
             {
                 DTO_Hang h = new DTO_Hang(txtTenhang.Text, int.Parse(txtSoluong.Text), float.Parse(txtDongianhap.Text),
-                    float.Parse(txtDongiaban.Text), "\\Images\\" + fileName, txtGhichu.Text, stremail);
+                    float.Parse(txtDongiaban.Text), "\\Images\\" + newFileName, txtGhichu.Text, stremail);
                 //DTO_Hang h = new DTO_Hang(txtTenhang.Text, int.Parse(txtSoluong.Text), float.Parse(txtDongianhap.Text),
                 //    float.Parse(txtDongiaban.Text), txtHinh.Text, txtGhichu.Text, stremail);
                 if (busHang.InsertHang(h))
@@ -200,9 +204,12 @@ namespace GUI_QLBanHang
                 fileAddress = dlgOpen.FileName;
                 pbHinh.Image = Image.FromFile(fileAddress);
                 fileName = Path.GetFileName(dlgOpen.FileName);
-                string saveDirectory = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
-                fileSavePath = saveDirectory + "\\Images\\" + fileName;// combine with file name*/
-                txtHinh.Text = "\\Images\\" + fileName;
+                string fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileAddress);
+                string currentTime = String.Format("{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
+                string extension = Path.GetExtension(fileAddress);
+                newFileName = $"{fileNameWithoutExt}_{currentTime}{extension}";
+                fileSavePath = saveDirectory + "\\Images\\" + newFileName;// combine with file name*/
+                txtHinh.Text = "\\Images\\" + newFileName;
             }
 
             //OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -218,7 +225,6 @@ namespace GUI_QLBanHang
         }
         private void Dgvhang_Click(object sender, EventArgs e)
         {
-            string saveDirectory = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
             if (dgvhang.Rows.Count > 1)
             {
                 btnMo.Enabled = true;
@@ -238,7 +244,11 @@ namespace GUI_QLBanHang
                 txtDongiaban.Text = dgvhang.CurrentRow.Cells["DonGiaBan"].Value.ToString();
                 txtHinh.Text = dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString();
                 checkUrlImage = txtHinh.Text;//giữ đường dẫn file hình
-                pbHinh.Image = Image.FromFile(saveDirectory + dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString());
+                //pbHinh.Image = Image.FromFile(saveDirectory + dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString());
+                using (Image temp = Image.FromFile(saveDirectory + dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString()))
+                {
+                    pbHinh.Image = new Bitmap(temp);
+                }
                 //pbHinh.ImageLocation = dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString();
                 txtGhichu.Text = dgvhang.CurrentRow.Cells["GhiChu"].Value.ToString();
             }
@@ -281,7 +291,7 @@ namespace GUI_QLBanHang
             }
             else if (float.Parse(txtDongiaban.Text) < float.Parse(txtDongianhap.Text))// kiem tra don gia ban lon hon don gia nhap
             {
-                MessageBox.Show("Bạn phải nhập đơn giá bán lớn hơn đơn giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập đơn giá bán lớn hơn hoặc bằng đơn giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongiaban.Focus();
                 return;
             }
@@ -302,7 +312,10 @@ namespace GUI_QLBanHang
                     if (busHang.UpdateHang(h))
                     {
                         if (txtHinh.Text != checkUrlImage)//nêu có thay doi hình
+                        {
                             File.Copy(fileAddress, fileSavePath, true);// copy file hinh vao ung dung
+                            File.Delete(saveDirectory + checkUrlImage);
+                        }
                         MessageBox.Show("Sửa thành công");
                         ResetValues();
                         LoadGridview_Hang(); // refresh datagridview
