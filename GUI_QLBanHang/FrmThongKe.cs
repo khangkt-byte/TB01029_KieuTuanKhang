@@ -14,15 +14,16 @@ namespace GUI_QLBanHang
     public partial class FrmThongKe : Form
     {
         BUS_Hang busHang = new BUS_QLBanHang.BUS_Hang();
+        BUS_Log busLog = new BUS_QLBanHang.BUS_Log();
         public FrmThongKe()
         {
             InitializeComponent();
             tpsanpham.Focus();
         }
 
-        private void tpsanpham_SelectedIndexChanged(object sender, EventArgs e)
+        private void FrmThongKe_Load(object sender, EventArgs e)
         {
-
+            LoadGridview_ThongKeHang();
         }
 
         private void TcThongKe_Selected(object sender, TabControlEventArgs e)
@@ -35,40 +36,42 @@ namespace GUI_QLBanHang
             {
                 LoadGridview_ThongKeTonKho();
             }
+            else if (e.TabPage == tpLogSanPham)
+            {
+                LoadGridview_LogSanPham();
+            }
         }
 
         private void LoadGridview_ThongKeHang()
         {
             dgvsp.AutoResizeColumns();
-            dgvsp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvsp.DataSource = busHang.ThongKeHang();
             dgvsp.Columns[0].HeaderText = "Mã nhân viên";
             dgvsp.Columns[1].HeaderText = "Tên nhân viên";
             dgvsp.Columns[2].HeaderText = "Số Lượng Sản Phẩm Nhập";
-            dgvsp.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvsp.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
         private void LoadGridview_ThongKeTonKho()
         {
             dgvtonkho.AutoResizeColumns();
-            dgvtonkho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvtonkho.DataSource = busHang.ThongKeTonKho();
-            dgvtonkho.Columns[0].HeaderText = "Tên Sản Phẩm";
-            dgvtonkho.Columns[1].HeaderText = "Số Lượng Tồn";
-            dgvtonkho.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvtonkho.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvtonkho.Columns[0].HeaderText = "Mã Sản Phẩm";
+            dgvtonkho.Columns[1].HeaderText = "Tên Sản Phẩm";
+            dgvtonkho.Columns[2].HeaderText = "Số Lượng Tồn";
         }
 
-        private void FrmThongKe_Load(object sender, EventArgs e)
+        private void LoadGridview_LogSanPham()
         {
-            if (tcThongKe.SelectedTab == tpsanpham)
-            {
-                LoadGridview_ThongKeHang();
-            }
-            else if (tcThongKe.SelectedTab == tptonkho)
-            {
-                LoadGridview_ThongKeTonKho();
-            }
+            dgvLogSanPham.DataSource = busLog.GetLogSanPham();
+            dgvLogSanPham.Columns[0].HeaderText = "ID";
+            dgvLogSanPham.Columns[0].FillWeight = 50;
+            dgvLogSanPham.Columns[1].HeaderText = "Sản phẩm";
+            dgvLogSanPham.Columns[2].HeaderText = "Nhân viên";
+            dgvLogSanPham.Columns[3].HeaderText = "Hành động";
+            dgvLogSanPham.Columns[4].HeaderText = "Giá trị cũ";
+            dgvLogSanPham.Columns[4].FillWeight = 150;
+            dgvLogSanPham.Columns[5].HeaderText = "Giá trị mới";
+            dgvLogSanPham.Columns[5].FillWeight = 150;
+            dgvLogSanPham.Columns[6].HeaderText = "Thời gian";
         }
     }
 }

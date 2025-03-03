@@ -35,6 +35,7 @@ namespace GUI_QLBanHang
             FrmMain.session = 0;// not yet login
             txtemail.Text = Properties.Settings.Default.Email;
             txtmatkhau.Text = Properties.Settings.Default.Password;
+            chkGhiNho.Checked = Properties.Settings.Default.Remember;
         }
 
         //event for thoat button
@@ -57,28 +58,22 @@ namespace GUI_QLBanHang
                 vaitro = dt.Rows[0][0].ToString();// lây vai tro cua nhan vien, hien thi cac chuc nang ma nhan vien co the thao tac
                 MessageBox.Show("Đăng nhập thành công");
 
-                if (busNhanVien.NhanVienKhongHoatDong(nv.EmailNV))
-                {
-                    MessageBox.Show("Tài khoản của bạn không hoạt động!");
-                    return;
-                }
-
                 FrmMain.session = 1; // cap nhat trang thai da dang nhap thanh cong
 
                 if (chkGhiNho.Checked)
                 {
-                    Properties.Settings.Default.Session = FrmMain.session;
+                    //Properties.Settings.Default.Session = FrmMain.session;
                     Properties.Settings.Default.Email = txtemail.Text;
                     Properties.Settings.Default.Password = txtmatkhau.Text;
-                    Properties.Settings.Default.Role = vaitro;
+                    //Properties.Settings.Default.Role = vaitro;
                     Properties.Settings.Default.Remember = chkGhiNho.Checked;
                 }
                 else
                 {
-                    Properties.Settings.Default.Session = 0;
+                    //Properties.Settings.Default.Session = FrmMain.session;
                     Properties.Settings.Default.Email = "";
                     Properties.Settings.Default.Password = "";
-                    Properties.Settings.Default.Role = "";
+                    //Properties.Settings.Default.Role = "";
                     Properties.Settings.Default.Remember = chkGhiNho.Checked;
                 }
 
@@ -195,6 +190,19 @@ namespace GUI_QLBanHang
                 // If Mail Doesnt Send Error Mesage Will Be Displayed
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void FrmDangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (!chkGhiNho.Checked)
+            //{
+            //    Properties.Settings.Default.Session = 0;
+            //    Properties.Settings.Default.Email = "";
+            //    Properties.Settings.Default.Password = "";
+            //    Properties.Settings.Default.Role = "";
+            //    Properties.Settings.Default.Remember = chkGhiNho.Checked;
+            //}
+            //Properties.Settings.Default.Save();
         }
     }
 }

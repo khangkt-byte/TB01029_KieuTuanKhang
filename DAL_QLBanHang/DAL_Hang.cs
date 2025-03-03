@@ -85,6 +85,7 @@ namespace DAL_QLBanHang
                 cmd.Parameters.AddWithValue("DonGiaBan", hang.DonGiaBan);
                 cmd.Parameters.AddWithValue("HinhAnh", hang.HinhAnh);
                 cmd.Parameters.AddWithValue("GhiChu", hang.GhiChu);
+                cmd.Parameters.AddWithValue("email", hang.EmailNV);
                 // Query và kiểm tra
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -101,7 +102,7 @@ namespace DAL_QLBanHang
             return false;
         }
 
-        public bool DeleteHang(int maHang)
+        public bool DeleteHang(int maHang, string email)
         {
             // using store procedure
             try
@@ -112,6 +113,7 @@ namespace DAL_QLBanHang
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "DeleteDataFromtblHang";
                 cmd.Parameters.AddWithValue("MaHang", maHang);
+                cmd.Parameters.AddWithValue("email", email);
                 cmd.Connection = _conn;
                 // Query và kiểm tra
                 if (cmd.ExecuteNonQuery() > 0)

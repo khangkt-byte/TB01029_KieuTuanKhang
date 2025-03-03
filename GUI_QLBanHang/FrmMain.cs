@@ -23,17 +23,17 @@ namespace GUI_QLBanHang
         FrmDangNhap dn;
         BUS_NhanVien busNhanVien = new BUS_NhanVien();
         public static Boolean isPasswordDefault = false;
-
+        Form currentFormChild;
         public FrmMain()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.Remember)
-            {
-                dn = new FrmDangNhap();
-                mail = Properties.Settings.Default.Email;
-                session = Properties.Settings.Default.Session;
-                dn.vaitro = Properties.Settings.Default.Role;
-            }
+            //if (Properties.Settings.Default.Remember)
+            //{
+            //    dn = new FrmDangNhap();
+            //    mail = Properties.Settings.Default.Email;
+            //    session = Properties.Settings.Default.Session;
+            //    dn.vaitro = Properties.Settings.Default.Role;
+            //}
         }
         public void FrmMain_Load(object sender, EventArgs e)
         {
@@ -44,20 +44,42 @@ namespace GUI_QLBanHang
                 thongtinnvToolStripMenuItem.Text = null;
                 profile = 0; //ẩn mục 'thong tin nhan vien'
             }
+            if (busNhanVien.NhanVienKhongHoatDong(mail))
+            {
+                MessageBox.Show("Tài khoản của bạn không hoạt động!");
+                LoOutToolStripMenuItem1_Click(sender, e);
+                return;
+            }
         }
 
         //show form KhachHang
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Nếu chưa mở
-            if (!CheckExistForm("FrmKhach"))
+            //if (!CheckExistForm("FrmKhach"))
+            //{
+            //    FrmKhach kh = new FrmKhach();
+            //    kh.MdiParent = this;
+            //    kh.Show();
+            //}
+            //else//hiển thị focus
+            //    ActiveChildForm("FrmKhach");
+
+            if (currentFormChild != null)
             {
-                FrmKhach nv = new FrmKhach();
-                nv.MdiParent = this;
-                nv.Show();
+                currentFormChild.Close();
             }
-            else//hiển thị focus
-                ActiveChildForm("FrmKhach");
+            FrmKhach kh = new FrmKhach();
+            currentFormChild = kh;
+            kh.TopLevel = false;
+            this.Controls.Add(kh);
+            kh.StartPosition = FormStartPosition.Manual;
+            kh.Location = new Point(
+                (this.ClientSize.Width - kh.Width) / 2,
+                (this.ClientSize.Height - kh.Height) / 2
+            );
+            kh.BringToFront();
+            kh.Show();
         }
 
         //show form sản phẩm
@@ -76,31 +98,64 @@ namespace GUI_QLBanHang
         //show form nhanvien
         private void NhanVienToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!CheckExistForm("frmNhanVien"))
+            //if (!CheckExistForm("frmNhanVien"))
+            //{
+            //    frmNhanVien nv = new frmNhanVien();
+            //    nv.MdiParent = this;
+            //    nv.Show();
+            //}
+            //else
+            //    ActiveChildForm("frmNhanVien");
+
+            if (currentFormChild != null)
             {
-                frmNhanVien nv = new frmNhanVien();
-                nv.MdiParent = this;
-                nv.Show();
+                currentFormChild.Close();
             }
-            else
-                ActiveChildForm("frmNhanVien");
+            frmNhanVien nv = new frmNhanVien();
+            currentFormChild = nv;
+            nv.TopLevel = false;
+            this.Controls.Add(nv);
+            nv.StartPosition = FormStartPosition.Manual;
+            nv.Location = new Point(
+                (this.ClientSize.Width - nv.Width) / 2,
+                (this.ClientSize.Height - nv.Height) / 2
+            );
+            nv.BringToFront();
+            nv.Show();
         }
 
         //show form đăng nhập
         public void ĐăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (!CheckExistForm("FrmDangNhap"))
+            //if (!CheckExistForm("FrmDangNhap"))
+            //{
+            //    dn = new FrmDangNhap();
+            //    dn.MdiParent = this;
+            //    dn.Show();
+            //    dn.FormClosed += new FormClosedEventHandler(FrmDangNhap_FormClosed);
+            //}
+            //else
+            //{
+            //    ActiveChildForm("FrmDangNhap");
+            //}
+
+            if (currentFormChild != null)
             {
-                dn = new FrmDangNhap();
-                dn.MdiParent = this;
-                dn.Show();
-                dn.FormClosed += new FormClosedEventHandler(FrmDangNhap_FormClosed);
+                currentFormChild.Close();
             }
-            else
-            {
-                ActiveChildForm("FrmDangNhap");
-            }
+            dn = new FrmDangNhap();
+            currentFormChild = dn;
+            dn.TopLevel = false;
+            this.Controls.Add(dn);
+            dn.StartPosition = FormStartPosition.Manual;
+            dn.Location = new Point(
+                (this.ClientSize.Width - dn.Width) / 2,
+                (this.ClientSize.Height - dn.Height) / 2
+            );
+            dn.BringToFront();
+            dn.Show();
+            dn.FormClosed += new FormClosedEventHandler(FrmDangNhap_FormClosed);
         }
 
         //show form thông tin nv
@@ -108,27 +163,59 @@ namespace GUI_QLBanHang
         {
             FrmThongTinNV profilenv = new FrmThongTinNV(FrmMain.mail);// khơi tạo FrmThongTinNV với email nv
 
-            if (!CheckExistForm("frmThongTinNV"))
+            //if (!CheckExistForm("frmThongTinNV"))
+            //{
+            //profilenv.MdiParent = this;
+            //profilenv.Show();
+            //    profilenv.FormClosed += new FormClosedEventHandler(FrmThongTinNV_FormClosed);
+            //}
+            //else
+            //    ActiveChildForm("frmThongTinNV");
+
+            if (currentFormChild != null)
             {
-                profilenv.MdiParent = this;
-                profilenv.FormClosed += new FormClosedEventHandler(FrmThongTinNV_FormClosed);
-                profilenv.Show();
+                currentFormChild.Close();
             }
-            else
-                ActiveChildForm("frmThongTinNV");
+            currentFormChild = profilenv;
+            profilenv.TopLevel = false;
+            this.Controls.Add(profilenv);
+            profilenv.StartPosition = FormStartPosition.Manual;
+            profilenv.Location = new Point(
+                (this.ClientSize.Width - profilenv.Width) / 2,
+                (this.ClientSize.Height - profilenv.Height) / 2
+            );
+            profilenv.BringToFront();
+            profilenv.Show();
+            profilenv.FormClosed += new FormClosedEventHandler(FrmThongTinNV_FormClosed);
         }
 
         //form thống kê sản phâm theo nhân viên nhập và thống kê số lượng sp tồn kho
         private void ThongKeSPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!CheckExistForm("FrmThongKe"))
+            //if (!CheckExistForm("FrmThongKe"))
+            //{
+            //    FrmThongKe tk = new FrmThongKe();
+            //    tk.MdiParent = this;
+            //    tk.Show();
+            //}
+            //else
+            //    ActiveChildForm("FrmThongKe");
+
+            if (currentFormChild != null)
             {
-                FrmThongKe nv = new FrmThongKe();
-                nv.MdiParent = this;
-                nv.Show();
+                currentFormChild.Close();
             }
-            else
-                ActiveChildForm("FrmThongKe");
+            FrmThongKe tk = new FrmThongKe();
+            currentFormChild = tk;
+            tk.TopLevel = false;
+            this.Controls.Add(tk);
+            tk.StartPosition = FormStartPosition.Manual;
+            tk.Location = new Point(
+                (this.ClientSize.Width - tk.Width) / 2,
+                (this.ClientSize.Height - tk.Height) / 2
+            );
+            tk.BringToFront();
+            tk.Show();
         }
 
         //show file hương dẫn phan mem
@@ -259,8 +346,8 @@ namespace GUI_QLBanHang
             thongtinnvToolStripMenuItem.Text = null;
             session = 0;
             Resetvalue();
-            Properties.Settings.Default.Remember = false;
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Remember = false;
+            //Properties.Settings.Default.Save();
         }
         private void OpenNewForm()
         {
